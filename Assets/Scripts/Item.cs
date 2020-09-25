@@ -2,25 +2,63 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : MonoBehaviour
+public class Item : ObjectInScene
 {
-	public Vector2 position;
-	public Quaternion rotation;
-
-	public Item(Vector2 position, Quaternion rotation)
-	{
-		this.position = position;
-		this.rotation = rotation;
-	}
-
-	public Item Copy()
+    public struct ItemState
     {
-		return new Item(this.position, this.rotation);
+        public Vector2 Position;
+        public Quaternion Rotation;
+
+        public ItemState(Vector2 position, Quaternion rotation)
+        {
+            Position = position;
+            Rotation = rotation;
+        }
     }
 
-	public void ChangePosition(Vector2 newPosition, Quaternion newRotation)
+    private ItemState currentState;
+    private ItemState pastState;
+    private ItemState presentState;
+
+    [SerializeField]
+    private TimeManager isPresent = null;
+
+    // save the initial position in the item currentSTate
+    private void Awake()
     {
-		position = newPosition;
-		rotation = newRotation;
+        currentState = new ItemState(transform.position, transform.rotation);
+    }
+
+    private void Start()
+    {
+        pastState = currentState;
+        isPresent.IsPresent = false;
+    }
+
+    // check if in the past, an item was move, and if so, reset the
+    // item presentState
+    private void Update()
+    {
+        if (!isPresent.IsPresent)
+        {
+            if (!pastState.Equals(currentState))
+            {
+                presentState = currentState;
+            }
+        }
+    }
+
+    // change the item position according to the current time
+    public void ResetItemPosition()
+    {
+        if (isPresent.IsPresent)
+        {
+            currentState = presentState;
+        }
+        else
+        {
+            presentState = currentState;
+            currentState = pastState;
+        }
     }
 }

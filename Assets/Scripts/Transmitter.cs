@@ -2,27 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Transmitter : MonoBehaviour
+public class Transmitter : InteractiveObject
 {
     [SerializeField]
-    private ButtonHolder buttonHolder;
+    private TimeManager isPresent = null;
 
     private bool isActive = false;
 
-    private void Update()
+    // property
+    public bool IsActive
     {
-        if (buttonHolder.TimePresent())
+        get
         {
-            isActive = false;
-        }
-        else
-        {
-            isActive = true;
+            return isActive;
         }
     }
 
-    public bool Active()
+    private void Update()
     {
-        return isActive;
+        isActive = !isPresent.IsPresent;
     }
 }
