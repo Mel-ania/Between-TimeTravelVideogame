@@ -120,7 +120,7 @@ public class Player : MonoBehaviour
         {
             Key key = other.GetComponent<Key>();
             AddKey(key);
-            Destroy(key.gameObject);
+            Destroy(other.gameObject);
         }
 
         // if door, check if there is an available key to open the door,

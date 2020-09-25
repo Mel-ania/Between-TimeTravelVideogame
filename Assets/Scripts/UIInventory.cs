@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,8 +14,8 @@ public class UIInventory : MonoBehaviour
 
     private void Awake()
     {
-        container = transform.Find("container");
-        keyTemplate = container.Find("buttonTemplate");
+        container = transform.Find("Container");
+        keyTemplate = container.Find("KeyTemplate");
         keyTemplate.gameObject.SetActive(false);
     }
 
@@ -41,11 +42,12 @@ public class UIInventory : MonoBehaviour
         List<Key> keyList = player.KeyList;
         for (int i = 0; i < keyList.Count; i++)
         {
-            Key.KeyType keyType = keyList[i].IsKeyType;
+            Key key = keyList[i];
+            Key.KeyType keyType = key.IsKeyType;
             Transform keyTransform = Instantiate(keyTemplate, container);
             keyTemplate.gameObject.SetActive(true);
             keyTemplate.GetComponent<RectTransform>().anchoredPosition = new Vector2(50 * i, 0);
-            Image keyImage = keyTransform.Find("image").GetComponent<Image>();
+            Image keyImage = keyTransform.Find("Image").GetComponent<Image>();
             switch (keyType)
             {
                 default:
