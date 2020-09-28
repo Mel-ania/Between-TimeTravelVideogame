@@ -5,7 +5,7 @@ using UnityEngine;
 public class TimeManager : MonoBehaviour
 {
     [SerializeField]
-    private List<Item> itemList;
+    private List<Item> itemList = new List<Item>();
 
     private bool isPresent = true;
 
@@ -22,11 +22,6 @@ public class TimeManager : MonoBehaviour
         }
     }
 
-    private void Awake()
-    {
-        itemList = new List<Item>();
-    }
-
     // change time from present to past or past to present (according to
     // the current time) and call the function that change the postiion
     // of the item in the scene
@@ -35,7 +30,7 @@ public class TimeManager : MonoBehaviour
         isPresent = !isPresent;
         foreach (Item item in itemList)
         {
-            item.ResetItemPosition();
+            item.ResetPosition();
         }
     }
 }

@@ -121,17 +121,19 @@ public class Player : MonoBehaviour
             Key key = other.GetComponent<Key>();
             AddKey(key);
             Destroy(other.gameObject);
+            OnKeysChanged?.Invoke(this, EventArgs.Empty);
         }
 
         // if door, check if there is an available key to open the door,
         // otherwise do nothing
         if (other.CompareTag("Door"))
         {
-            Door door = other.GetComponent<Door>();
             if (ContainsKeyType(Key.KeyType.Green))
             {
+                Door door = other.GetComponent<Door>();
                 RemoveOneKey(Key.KeyType.Green);
                 door.OpenDoor();
+                OnKeysChanged?.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -166,14 +168,12 @@ public class Player : MonoBehaviour
     public void AddKey (Key key)
     {
         keyList.Add(key);
-        OnKeysChanged?.Invoke(this, EventArgs.Empty);
     }
 
     // remove one key that has a specific KeyType
     public void RemoveOneKey(Key.KeyType keyType)
     {
         keyList.Remove(FindKeyType(keyType));
-        OnKeysChanged?.Invoke(this, EventArgs.Empty);
     }
 
     // check if there is at least one key in the keyList
