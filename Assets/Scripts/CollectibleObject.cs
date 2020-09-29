@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectInScene : MonoBehaviour
+public class CollectibleObject : ObjectInScene
 {
-    
+
 }

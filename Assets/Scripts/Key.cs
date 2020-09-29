@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Key : InteractiveObject
+public class Key : CollectibleObject
 {
     private KeyType keyType;
 
