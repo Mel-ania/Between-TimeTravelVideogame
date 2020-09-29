@@ -30,6 +30,7 @@ public class UIInventory : MonoBehaviour
 
     private void UpdateVisual()
     {
+        // delete the old inventory
         foreach(Transform child in container)
         {
             if (child != keyTemplate)
@@ -38,14 +39,15 @@ public class UIInventory : MonoBehaviour
             }
         }
 
+        // create the new inventory and set the right color
         List<Key> keyList = player.KeyList;
         for (int i = 0; i < keyList.Count; i++)
         {
             Key key = keyList[i];
             Key.KeyType keyType = key.IsKeyType;
             Transform keyTransform = Instantiate(keyTemplate, container);
-            keyTemplate.gameObject.SetActive(true);
-            keyTemplate.GetComponent<RectTransform>().anchoredPosition = new Vector2(50 * i, 0);
+            keyTransform.gameObject.SetActive(true);
+            keyTransform.GetComponent<RectTransform>().anchoredPosition = new Vector2(50 * i, 0);
             Image keyImage = keyTransform.Find("Image").GetComponent<Image>();
             switch (keyType)
             {
