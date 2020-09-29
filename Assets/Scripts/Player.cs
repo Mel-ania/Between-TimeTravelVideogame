@@ -124,11 +124,11 @@ public class Player : MonoBehaviour
             OnKeysChanged?.Invoke(this, EventArgs.Empty);
         }
 
-        // if door, check if there is an available key to open the door,
-        // otherwise do nothing
+        // if door, check if there is an available key to open the door
+        // and the time is present, otherwise do nothing
         if (other.CompareTag("Door"))
         {
-            if (ContainsKeyType(Key.KeyType.Green))
+            if (ContainsKeyType(Key.KeyType.Green) && time.IsPresent)
             {
                 Door door = other.GetComponent<Door>();
                 RemoveOneKey(Key.KeyType.Green);
