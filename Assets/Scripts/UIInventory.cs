@@ -48,7 +48,7 @@ public class UIInventory : MonoBehaviour
             Transform keyTransform = Instantiate(keyTemplate, container);
             keyTransform.gameObject.SetActive(true);
             keyTransform.GetComponent<RectTransform>().anchoredPosition = new Vector2(50 * i, 0);
-            Image keyImage = keyTransform.Find("Image").GetComponent<Image>();
+            Image keyImage = keyTransform.Find("Base").GetComponent<Image>();
             switch (keyType)
             {
                 default:

@@ -132,7 +132,7 @@ public class Player : MonoBehaviour
             {
                 Door door = other.GetComponent<Door>();
                 RemoveOneKey(Key.KeyType.Green);
-                door.OpenDoor();
+                door.OpenPassage();
                 OnKeysChanged?.Invoke(this, EventArgs.Empty);
             }
         }

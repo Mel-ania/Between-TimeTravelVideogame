@@ -52,6 +52,7 @@ public class TimeManager : MonoBehaviour
         }
     }
 
+    // change the color of the filter according to the current time
     private void ChangeFilter()
     {
         if (!isPresent)

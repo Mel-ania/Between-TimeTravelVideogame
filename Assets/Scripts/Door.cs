@@ -5,7 +5,7 @@ using UnityEngine;
 public class Door : InteractiveObject
 {
     // open the door
-    public void OpenDoor()
+    public virtual void OpenPassage()
     {
         gameObject.SetActive(false);
     }
