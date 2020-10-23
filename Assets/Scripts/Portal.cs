@@ -8,12 +8,15 @@ public class Portal : Door
     private TimeManager time = null;
     [SerializeField]
     private GameObject portal = null;
+    [SerializeField]
+    private GameObject particles = null;
 
     public override void OpenPassage()
     {
         if (time.IsPresent)
         {
             portal.gameObject.SetActive(true);
+            particles.gameObject.SetActive(true);
         }
     }
 }
