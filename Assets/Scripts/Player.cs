@@ -23,7 +23,6 @@ public class Player : MonoBehaviour
 
     private bool isFacingRight = true;
     private bool isGrounded = false;
-    private bool isLookingBack = false;
 
     //Inventory
     public event EventHandler OnKeysChanged;
@@ -42,7 +41,6 @@ public class Player : MonoBehaviour
         }
     }
 
-
     private void Awake()
     {
         keyList = new List<Key>();
@@ -59,27 +57,24 @@ public class Player : MonoBehaviour
     {
         // Moving
         moveInput = Input.GetAxis("Horizontal");
-        if (!isLookingBack)
+        rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+        if (moveInput == 0)
         {
-            rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
-            if (moveInput == 0)
-            {
-                animator.SetBool("isRunning", false);
-            }
-            else
-            {
-                animator.SetBool("isRunning", true);
-            }
+            animator.SetBool("isRunning", false);
+        }
+        else
+        {
+            animator.SetBool("isRunning", true);
+        }
 
-            // Facing left or right
-            if (isFacingRight == false && moveInput > 0)
-            {
-                Flip();
-            }
-            else if (isFacingRight == true && moveInput < 0)
-            {
-                Flip();
-            }
+        // Facing left or right
+        if (isFacingRight == false && moveInput > 0)
+        {
+            Flip();
+        }
+        else if (isFacingRight == true && moveInput < 0)
+        {
+            Flip();
         }
 
         // Jumping
@@ -152,15 +147,17 @@ public class Player : MonoBehaviour
                 if (ContainsKeyType(Key.KeyType.Red) && isGrounded)
                 {
                     animator.SetTrigger("lookBack");
-                    isLookingBack = true;
                     ColorListRedToGreen();
                     OnKeysChanged?.Invoke(this, EventArgs.Empty);
                 }
             }
         }
-        else
+
+        // if level manager, leave the player go into the portal
+        if (other.CompareTag("LevelManager"))
         {
-            isLookingBack = false;
+            LevelManager lm = other.GetComponent<LevelManager>();
+            lm.NextLevel();
         }
     }
 
