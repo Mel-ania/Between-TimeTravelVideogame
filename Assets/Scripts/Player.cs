@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     //Movements
-    //private Animator anim;
+    private Animator animator;
     private Rigidbody2D rb;
     [SerializeField]
     Transform groundCheck = null;
@@ -23,7 +23,8 @@ public class Player : MonoBehaviour
 
     private bool isFacingRight = true;
     private bool isGrounded = false;
-        
+    private bool isLookingBack = false;
+
     //Inventory
     public event EventHandler OnKeysChanged;
 
@@ -31,7 +32,7 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private TimeManager time = null;
-    
+
     // property
     public List<Key> KeyList
     {
@@ -40,6 +41,7 @@ public class Player : MonoBehaviour
             return keyList;
         }
     }
+
 
     private void Awake()
     {
@@ -50,31 +52,34 @@ public class Player : MonoBehaviour
     {
         extraJumps = extraJumpsValue;
         rb = GetComponent<Rigidbody2D>();
-        //anim = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
     {
         // Moving
         moveInput = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
-        if (moveInput == 0)
+        if (!isLookingBack)
         {
-            //anim.SetBool("isRunning", false);
-        }
-        else
-        {
-            //anim.SetBool("isRunning", true);
-        }
+            rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+            if (moveInput == 0)
+            {
+                animator.SetBool("isRunning", false);
+            }
+            else
+            {
+                animator.SetBool("isRunning", true);
+            }
 
-        // Facing left or right
-        if (isFacingRight == false && moveInput > 0)
-        {
-            Flip();
-        }
-        else if (isFacingRight == true && moveInput < 0)
-        {
-            Flip();
+            // Facing left or right
+            if (isFacingRight == false && moveInput > 0)
+            {
+                Flip();
+            }
+            else if (isFacingRight == true && moveInput < 0)
+            {
+                Flip();
+            }
         }
 
         // Jumping
@@ -84,28 +89,28 @@ public class Player : MonoBehaviour
     private void Update()
     {
         // Jumps
-        if (isGrounded == true)
+        if (isGrounded)
         {
-            //anim.SetBool("isJumping", false);
+            animator.SetBool("isJumping", false);
             extraJumps = extraJumpsValue;
         }
         else
         {
-            //anim.SetBool("isJumping", true);
+            animator.SetBool("isJumping", true);
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && extraJumps > 0)
         {
-            //anim.SetTrigger("takeOf");
+            animator.SetTrigger("lower");
             rb.velocity = Vector2.up * jumpForce;
             extraJumps--;
         }
-        else if (Input.GetKeyDown(KeyCode.Space) && extraJumps == 0 && isGrounded == true)
+        else if (Input.GetKeyDown(KeyCode.Space) && extraJumps == 0 && isGrounded)
         {
             rb.velocity = Vector2.up * jumpForce;
         }
 
-        
+
         // Change time
         if (ContainsAtLeastOne() && Input.GetKeyUp(KeyCode.T))
         {
@@ -144,12 +149,18 @@ public class Player : MonoBehaviour
             Transmitter transmitter = other.GetComponent<Transmitter>();
             if (transmitter.IsActive)
             {
-                if (ContainsKeyType(Key.KeyType.Red))
+                if (ContainsKeyType(Key.KeyType.Red) && isGrounded)
                 {
+                    animator.SetTrigger("lookBack");
+                    isLookingBack = true;
                     ColorListRedToGreen();
                     OnKeysChanged?.Invoke(this, EventArgs.Empty);
                 }
             }
+        }
+        else
+        {
+            isLookingBack = false;
         }
     }
 
@@ -161,6 +172,7 @@ public class Player : MonoBehaviour
         Scaler.x *= -1;
         transform.localScale = Scaler;
     }
+
 
     ///// Inventory /////
 
