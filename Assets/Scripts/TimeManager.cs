@@ -5,11 +5,9 @@ using UnityEngine.UI;
 
 public class TimeManager : MonoBehaviour
 {
-    [SerializeField]
-    private List<Item> itemList = new List<Item>();
+    [SerializeField] private List<Item> itemList = new List<Item>();
 
-    [SerializeField]
-    private Transform timeView = null;
+    [SerializeField] private Transform timeView = null;
 
     private Color pastColor;
     private Color presentColor;

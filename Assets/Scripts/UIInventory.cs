@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class UIInventory : MonoBehaviour
 {
-    [SerializeField]
-    private Player player = null;
+    [SerializeField] private Player player = null;
 
     private Transform container;
     private Transform keyTemplate;
@@ -47,7 +46,7 @@ public class UIInventory : MonoBehaviour
             Key.KeyType keyType = key.IsKeyType;
             Transform keyTransform = Instantiate(keyTemplate, container);
             keyTransform.gameObject.SetActive(true);
-            keyTransform.GetComponent<RectTransform>().anchoredPosition = new Vector2(50 * i, 0);
+            keyTransform.GetComponent<RectTransform>().anchoredPosition = new Vector2(-50 * i, 0);
             Image keyImage = keyTransform.Find("Base").GetComponent<Image>();
             switch (keyType)
             {

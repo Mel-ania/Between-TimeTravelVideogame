@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Transmitter : InteractiveObject
 {
-    [SerializeField]
-    private TimeManager isPresent = null;
+    [SerializeField] private TimeManager isPresent = null;
 
     private Animator animator;
 

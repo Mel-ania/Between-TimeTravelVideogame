@@ -5,8 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField]
-    private Player player = null;
+    [SerializeField] private Player player = null;
 
     //go to the next level and save the progress
     public void NextLevel()
