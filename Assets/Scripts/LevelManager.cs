@@ -8,10 +8,19 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     private Player player = null;
 
+    //go to the next level and save the progress
     public void NextLevel()
     {
-        //SceneManager.LoadScene(0);
         player.gameObject.SetActive(false);
-        Debug.Log("entrato");
+
+        if (SceneManager.GetActiveScene().buildIndex == PlayerPrefs.GetInt("FinalLevel"))
+        {
+            SceneManager.LoadScene("Home");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("SavedLevel", SceneManager.GetActiveScene().buildIndex + 1);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 }
