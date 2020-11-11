@@ -10,12 +10,12 @@ public class PauseMenu : Menu
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void GoToMenu()
+    public void GoHome()
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("Home");
     }
 
-    public void OnPauseTheLevel(bool pause)
+    public void OnPause(bool pause)
     {
         if (pause)
         {

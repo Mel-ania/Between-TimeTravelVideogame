@@ -5,13 +5,18 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    //Aspect
+    private SpriteRenderer hood;
+    private SpriteRenderer body;
+    private SpriteRenderer armLeft;
+    private SpriteRenderer armRight;
+    [SerializeField] private PlayerColorManager pcm = null;
+
     //Movements
     private Animator animator;
     private Rigidbody2D rb;
-    [SerializeField]
-    Transform groundCheck = null;
-    [SerializeField]
-    LayerMask whatIsGround = default;
+    [SerializeField] Transform groundCheck = null;
+    [SerializeField] LayerMask whatIsGround = default;
 
     private float moveInput;
     private readonly float checkRadius = 0.5f;
@@ -26,11 +31,8 @@ public class Player : MonoBehaviour
 
     //Inventory
     public event EventHandler OnKeysChanged;
-
     private List<Key> keyList;
-
-    [SerializeField]
-    private TimeManager time = null;
+    [SerializeField] private TimeManager time = null;
 
     // property
     public List<Key> KeyList
@@ -44,6 +46,11 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         keyList = new List<Key>();
+
+        hood     = GameObject.Find("Head/Hood").GetComponent<SpriteRenderer>();
+        body     = GameObject.Find("Body").GetComponent<SpriteRenderer>();
+        armLeft  = GameObject.Find("Arm left").GetComponent<SpriteRenderer>();
+        armRight = GameObject.Find("Arm right").GetComponent<SpriteRenderer>();
     }
 
     private void Start()
@@ -51,6 +58,10 @@ public class Player : MonoBehaviour
         extraJumps = extraJumpsValue;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        hood.color     = pcm.IsPlayerColor;
+        body.color     = pcm.IsPlayerColor;
+        armLeft.color  = pcm.IsPlayerColor;
+        armRight.color = pcm.IsPlayerColor;
     }
 
     private void FixedUpdate()
