@@ -10,7 +10,7 @@ public class Camera : MonoBehaviour
     private float min;
     private float max;
 
-    private void Awake()
+    private void Start()
     {
         min = 0f;
         max = end.position.x - 7.5f;
