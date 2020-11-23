@@ -30,8 +30,9 @@ public class Player : MonoBehaviour
     private bool isGrounded = false;
 
     //Inventory
-    public event EventHandler OnKeysChanged;
+    public event EventHandler OnInventoryChanged;
     private List<Key> keyList;
+    private int dices = 0;
     [SerializeField] private TimeManager time = null;
 
     // property
@@ -40,6 +41,13 @@ public class Player : MonoBehaviour
         get
         {
             return keyList;
+        }
+    }
+    public int DicesNumber
+    {
+        get
+        {
+            return dices;
         }
     }
 
@@ -132,7 +140,16 @@ public class Player : MonoBehaviour
             Key key = other.GetComponent<Key>();
             AddKey(key);
             Destroy(other.gameObject);
-            OnKeysChanged?.Invoke(this, EventArgs.Empty);
+            OnInventoryChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        //
+        if (other.CompareTag("Collectible"))
+        {
+            CollectibleObject collectible = other.GetComponent<CollectibleObject>();
+            dices++;
+            Destroy(other.gameObject);
+            OnInventoryChanged?.Invoke(this, EventArgs.Empty);
         }
 
         // if door, check if there is an available key to open the door
@@ -144,7 +161,7 @@ public class Player : MonoBehaviour
                 Door door = other.GetComponent<Door>();
                 RemoveOneKey(Key.KeyType.Green);
                 door.OpenPassage();
-                OnKeysChanged?.Invoke(this, EventArgs.Empty);
+                OnInventoryChanged?.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -159,7 +176,7 @@ public class Player : MonoBehaviour
                 {
                     animator.SetTrigger("lookBack");
                     ColorListRedToGreen();
-                    OnKeysChanged?.Invoke(this, EventArgs.Empty);
+                    OnInventoryChanged?.Invoke(this, EventArgs.Empty);
                 }
             }
         }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,17 +10,20 @@ public class UIInventory : MonoBehaviour
 
     private Transform container;
     private Transform keyTemplate;
+    private Transform dicesTemplate;
 
     private void Awake()
     {
         container = transform.Find("Container");
         keyTemplate = container.Find("KeyTemplate");
         keyTemplate.gameObject.SetActive(false);
+        dicesTemplate = container.Find("DicesTemplate");
+        dicesTemplate.gameObject.SetActive(false);
     }
 
     private void Start()
     {
-        player.OnKeysChanged += ButtonHolder_OnButtonsChanged;
+        player.OnInventoryChanged += ButtonHolder_OnButtonsChanged;
     }
 
     private void ButtonHolder_OnButtonsChanged(object sender, System.EventArgs e)
@@ -32,15 +36,16 @@ public class UIInventory : MonoBehaviour
         // delete the old inventory
         foreach(Transform child in container)
         {
-            if (child != keyTemplate)
+            if (child != keyTemplate && child != dicesTemplate)
             {
                 Destroy(child.gameObject);
             }
         }
 
-        // create the new inventory and set the right color
+        // create the new keys inventory and set the right color
         List<Key> keyList = player.KeyList;
-        for (int i = 0; i < keyList.Count; i++)
+        int i;
+        for (i = 0; i < keyList.Count; i++)
         {
             Key key = keyList[i];
             Key.KeyType keyType = key.IsKeyType;
@@ -59,6 +64,14 @@ public class UIInventory : MonoBehaviour
                     break;
             }
         }
+
+        //create the new collectibles inventory
+        Transform dicesTransform = Instantiate(dicesTemplate, container);
+        dicesTransform.gameObject.SetActive(true);
+        dicesTransform.GetComponent<RectTransform>().anchoredPosition = new Vector2(-50 * i, 0);
+        TextMeshPro dicesNumber = dicesTransform.Find("Number").GetComponent<TextMeshPro>();
+        dicesNumber.text = player.DicesNumber.ToString();
+        
     }
 }
 
