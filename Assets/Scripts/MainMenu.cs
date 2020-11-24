@@ -17,6 +17,7 @@ public class MainMenu : Menu
     public void NewGame()
     {
         PlayerPrefs.SetInt("SavedLevel", 1);
+        PlayerPrefs.SetInt("Dices", 0);
         SceneManager.LoadScene("Level 1");
     }
 

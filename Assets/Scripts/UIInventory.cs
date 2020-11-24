@@ -44,7 +44,7 @@ public class UIInventory : MonoBehaviour
 
         // create the new keys inventory and set the right color
         List<Key> keyList = player.KeyList;
-        int i;
+        int i = 0;
         for (i = 0; i < keyList.Count; i++)
         {
             Key key = keyList[i];
@@ -66,12 +66,14 @@ public class UIInventory : MonoBehaviour
         }
 
         //create the new collectibles inventory
-        Transform dicesTransform = Instantiate(dicesTemplate, container);
-        dicesTransform.gameObject.SetActive(true);
-        dicesTransform.GetComponent<RectTransform>().anchoredPosition = new Vector2(-50 * i, 0);
-        TextMeshPro dicesNumber = dicesTransform.Find("Number").GetComponent<TextMeshPro>();
-        dicesNumber.text = player.DicesNumber.ToString();
-        
+        if(player.DicesNumber > 0)
+        {
+            Transform dicesTransform = Instantiate(dicesTemplate, container);
+            dicesTransform.gameObject.SetActive(true);
+            dicesTransform.GetComponent<RectTransform>().anchoredPosition = new Vector2(-50 * i - 20, 0);
+            TextMeshProUGUI dicesNumber = dicesTransform.Find("Number").GetComponent<TextMeshProUGUI>();
+            dicesNumber.SetText(player.DicesNumber.ToString());
+        }
     }
 }
 

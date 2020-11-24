@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
     //Inventory
     public event EventHandler OnInventoryChanged;
     private List<Key> keyList;
-    private int dices = 0;
+    private int dices;
     [SerializeField] private TimeManager time = null;
 
     // property
@@ -43,6 +43,7 @@ public class Player : MonoBehaviour
             return keyList;
         }
     }
+
     public int DicesNumber
     {
         get
@@ -54,7 +55,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         keyList = new List<Key>();
-
+        dices = PlayerPrefs.GetInt("Dices");
         hood     = GameObject.Find("Head/Hood").GetComponent<SpriteRenderer>();
         body     = GameObject.Find("Body").GetComponent<SpriteRenderer>();
         armLeft  = GameObject.Find("Arm left").GetComponent<SpriteRenderer>();
@@ -64,7 +65,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         extraJumps = extraJumpsValue;
-        rb = GetComponent<Rigidbody2D>();
+        rb       = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         hood.color     = pcm.IsPlayerColor;
         body.color     = pcm.IsPlayerColor;
@@ -134,6 +135,12 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        // if showInventory, then show the stored inventory
+        if (other.CompareTag("ShowInventory"))
+        {
+            OnInventoryChanged?.Invoke(this, EventArgs.Empty);
+        }
+
         // if key, take the key and remove it from the scene
         if (other.CompareTag("Key"))
         {
@@ -143,7 +150,7 @@ public class Player : MonoBehaviour
             OnInventoryChanged?.Invoke(this, EventArgs.Empty);
         }
 
-        //
+        // if collectible, take the collectible and remove it from the scene
         if (other.CompareTag("Collectible"))
         {
             CollectibleObject collectible = other.GetComponent<CollectibleObject>();
@@ -185,6 +192,7 @@ public class Player : MonoBehaviour
         if (other.CompareTag("LevelManager"))
         {
             LevelManager lm = other.GetComponent<LevelManager>();
+            PlayerPrefs.SetInt("Dices", dices);
             lm.NextLevel();
         }
     }
