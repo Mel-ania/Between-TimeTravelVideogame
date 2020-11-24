@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 7729252479245824568}
   - component: {fileID: 7729252479245824575}
   - component: {fileID: 7729252479245824574}
-  - component: {fileID: 7729252479245824569}
+  - component: {fileID: -6733789349646680603}
   m_Layer: 0
   m_Name: Dices
-  m_TagString: Collectible
+  m_TagString: Dices
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,7 +101,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0.8018707, y: 2.8676014}
   m_Size: {x: 30.010532, y: 30.010532}
   m_Direction: 0
---- !u!114 &7729252479245824569
+--- !u!114 &-6733789349646680603
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7729252479245824573}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7d2bebd5bd2fe94891162158b4e5403, type: 3}
+  m_Script: {fileID: 11500000, guid: 9964637428b2579429972154f5704529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7729252480344631990

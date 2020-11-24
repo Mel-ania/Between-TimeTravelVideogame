@@ -151,9 +151,8 @@ public class Player : MonoBehaviour
         }
 
         // if collectible, take the collectible and remove it from the scene
-        if (other.CompareTag("Collectible"))
+        if (other.CompareTag("Dices"))
         {
-            CollectibleObject collectible = other.GetComponent<CollectibleObject>();
             dices++;
             Destroy(other.gameObject);
             OnInventoryChanged?.Invoke(this, EventArgs.Empty);
