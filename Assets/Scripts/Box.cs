@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Box : Item
 {
-    //private Animator animator;
+    private Animator animator;
     private BoxCollider2D boxC;
 
     private bool isLanded = true;
@@ -13,7 +13,7 @@ public class Box : Item
 
     private void Start()
     {
-        //animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         boxC = GetComponent<BoxCollider2D>();
     }
 
@@ -23,7 +23,7 @@ public class Box : Item
         isGrounded = boxC.IsTouchingLayers();
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         // check if the height from the box falls is too much,
         // if it is, the box it's broken
@@ -35,9 +35,9 @@ public class Box : Item
         else if (isGrounded && !isLanded)
         {
             isLanded = true;
-            if (yPosition - transform.position.y > 5) {
-                //animator.SetTrigger("broken");
-                gameObject.SetActive(false);
+            if (yPosition - transform.position.y > 5)
+            {
+                animator.SetTrigger("broken");
             }
 
         }
