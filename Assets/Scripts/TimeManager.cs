@@ -46,6 +46,10 @@ public class TimeManager : MonoBehaviour
         ChangeFilter();
         foreach (Item item in itemList)
         {
+            if (!isPresent)
+            {
+                item.gameObject.SetActive(true);
+            }
             item.ResetPosition();
         }
     }
