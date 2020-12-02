@@ -18,11 +18,14 @@ public class Camera : MonoBehaviour
 
     private void LateUpdate()
     {
-        Vector3 temp = transform.position;
-        temp.x = player.position.x;
-        if(temp.x > min && temp.x < max)
+        if (player)
         {
-            transform.position = temp;
+            Vector3 temp = transform.position;
+            temp.x = player.position.x;
+            if (temp.x > min && temp.x < max)
+            {
+                transform.position = temp;
+            }
         }
     }
 }

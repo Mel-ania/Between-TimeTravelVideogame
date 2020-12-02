@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    //Menu
+    [SerializeField] private PauseMenu pm = null;
+
     //Aspect
     private SpriteRenderer hood;
     private SpriteRenderer body;
@@ -169,6 +172,13 @@ public class Player : MonoBehaviour
                 door.OpenPassage();
                 OnInventoryChanged?.Invoke(this, EventArgs.Empty);
             }
+        }
+
+        // if enemy, the player is dead and the pause menu appear
+        if (other.CompareTag("Enemy"))
+        {
+            pm.DeadPlayer();
+            Destroy(gameObject);
         }
 
         // if transmitter, check if it active and change the KeyType from
