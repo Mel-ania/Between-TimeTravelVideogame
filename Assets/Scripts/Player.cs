@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
     private List<Key> keyList;
     private int dices;
     [SerializeField] private TimeManager time = null;
+    [SerializeField] private GameObject genericSound = null;
 
     // property
     public List<Key> KeyList
@@ -150,6 +151,7 @@ public class Player : MonoBehaviour
             Key key = other.GetComponent<Key>();
             AddKey(key);
             Destroy(other.gameObject);
+            Instantiate(genericSound, other.transform.position, Quaternion.identity);
             OnInventoryChanged?.Invoke(this, EventArgs.Empty);
         }
 
@@ -158,6 +160,7 @@ public class Player : MonoBehaviour
         {
             dices++;
             Destroy(other.gameObject);
+            Instantiate(genericSound, other.transform.position, Quaternion.identity);
             OnInventoryChanged?.Invoke(this, EventArgs.Empty);
         }
 
@@ -169,6 +172,7 @@ public class Player : MonoBehaviour
             {
                 Door door = other.GetComponent<Door>();
                 RemoveOneKey(Key.KeyType.Green);
+                Instantiate(genericSound, other.transform.position, Quaternion.identity);
                 door.OpenPassage();
                 OnInventoryChanged?.Invoke(this, EventArgs.Empty);
             }

@@ -15,6 +15,7 @@ public class PauseMenu : Menu
 
     public void GoHome()
     {
+        Destroy(GameObject.Find("Main Camera"));
         SceneManager.LoadScene("Home");
     }
 
