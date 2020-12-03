@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DangerousObject : InteractiveObject
 {
-    [SerializeField] private TimeManager time = null;
+    //[SerializeField] private TimeManager time = null;
 
 
 }
