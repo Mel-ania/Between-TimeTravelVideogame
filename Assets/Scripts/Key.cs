@@ -5,11 +5,13 @@ using UnityEngine;
 public class Key : CollectibleObject
 {
     private KeyType keyType;
+    [SerializeField] private KeyType startingKeyType = KeyType.Red;
 
     public enum KeyType
     {
         Red,
-        Green
+        Green,
+        Blue
     }
 
     // property
@@ -28,6 +30,6 @@ public class Key : CollectibleObject
     // initialize the KeyType to Red
     private void Start()
     {
-        keyType = KeyType.Red;
+        keyType = startingKeyType;
     }
 }

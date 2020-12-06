@@ -62,6 +62,9 @@ public class UIInventory : MonoBehaviour
                 case Key.KeyType.Green:   
                     keyImage.color = Color.green;   
                     break;
+                case Key.KeyType.Blue:
+                    keyImage.color = Color.blue;
+                    break;
             }
         }
 

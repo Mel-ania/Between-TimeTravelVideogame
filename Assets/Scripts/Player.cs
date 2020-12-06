@@ -165,15 +165,28 @@ public class Player : MonoBehaviour
         }
 
         // if door, check if there is an available key to open the door
-        // and the time is present, otherwise do nothing
         if (other.CompareTag("Door"))
+        {
+            Door door = other.GetComponent<Door>();
+            if (ContainsKeyType(door.IsDoorKeyType))
+            {
+                RemoveOneKey(door.IsDoorKeyType);
+                Instantiate(genericSound, other.transform.position, Quaternion.identity);
+                door.OpenPassage();
+                OnInventoryChanged?.Invoke(this, EventArgs.Empty);
+            }
+        }
+
+        // if portal, check if there is an available key to open the portal
+        // and the time is present, otherwise do nothing
+        if (other.CompareTag("Portal"))
         {
             if (ContainsKeyType(Key.KeyType.Green) && time.IsPresent)
             {
-                Door door = other.GetComponent<Door>();
+                Portal portal = other.GetComponent<Portal>();
                 RemoveOneKey(Key.KeyType.Green);
                 Instantiate(genericSound, other.transform.position, Quaternion.identity);
-                door.OpenPassage();
+                portal.OpenPassage();
                 OnInventoryChanged?.Invoke(this, EventArgs.Empty);
             }
         }
