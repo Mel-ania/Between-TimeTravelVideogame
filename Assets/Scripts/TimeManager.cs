@@ -38,8 +38,9 @@ public class TimeManager : MonoBehaviour
     }
 
     // change time from present to past or past to present (according to
-    // the current time) and call the function that change the postiion
-    // of the item in the scene
+    // the current time), call the function that change the postiion
+    // of the item in the scene and the function that turn on or off
+    // the dangerous objects
     public void ChangeTime()
     {
         isPresent = !isPresent;
@@ -58,6 +59,7 @@ public class TimeManager : MonoBehaviour
     }
 
     // change the color of the filter according to the current time
+    // and active the right text
     private void ChangeFilter()
     {
         if (!isPresent)

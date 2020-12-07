@@ -9,6 +9,7 @@ public class Box : Item
 
     private bool isLanded = true;
     private bool isGrounded = false;
+
     private float yPosition;
 
     private void Start()
@@ -35,7 +36,7 @@ public class Box : Item
         else if (isGrounded && !isLanded)
         {
             isLanded = true;
-            if (yPosition - transform.position.y > 5)
+            if (yPosition - transform.position.y > 4)
             {
                 animator.SetTrigger("broken");
             }

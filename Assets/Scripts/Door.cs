@@ -15,7 +15,7 @@ public class Door : InteractiveObject
         }
     }
 
-    // open the door
+    // open the passage
     public void OpenPassage()
     {
         gameObject.SetActive(false);

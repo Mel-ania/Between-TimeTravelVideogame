@@ -8,6 +8,8 @@ public class Portal : Door
     [SerializeField] private GameObject portal = null;
     [SerializeField] private GameObject particles = null;
 
+    // override the method to open the passage (Door)
+    // activating the portal
     public new void OpenPassage()
     {
         if (time.IsPresent)

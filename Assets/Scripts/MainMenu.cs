@@ -14,6 +14,7 @@ public class MainMenu : Menu
         PlayerPrefs.SetInt("FinalLevel", 3);
     }
 
+    // load a new game and reset the scores
     public void NewGame()
     {
         PlayerPrefs.SetInt("SavedLevel", 1);
@@ -21,6 +22,7 @@ public class MainMenu : Menu
         SceneManager.LoadScene("Level 1");
     }
 
+    // load the previous game
     public void Continue()
     {
         SceneManager.LoadScene("Level " + PlayerPrefs.GetInt("SavedLevel"));

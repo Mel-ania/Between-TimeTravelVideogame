@@ -15,6 +15,9 @@ public class DangerousObject : InteractiveObject
         isActive = on.activeSelf;
     }
 
+    // when a dangerous oblect change state in different
+    // periods of time, it has to turn on or off, so its active
+    // state change
     public void TurnOnOff()
     {
         if (isTurning)

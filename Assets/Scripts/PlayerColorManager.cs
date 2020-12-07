@@ -44,6 +44,7 @@ public class PlayerColorManager : MonoBehaviour
         }
     }
     
+    // save the preference for the player color
     public void SavePlayerColor(int color)
     {
         PlayerPrefs.SetInt("PlayerColor", color);
