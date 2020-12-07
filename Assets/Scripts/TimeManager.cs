@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class TimeManager : MonoBehaviour
 {
     [SerializeField] private List<Item> itemList = new List<Item>();
-
+    [SerializeField] private List<DangerousObject> dangerList = new List<DangerousObject>();
     [SerializeField] private Transform timeView = null;
 
     private Color pastColor;
@@ -51,6 +51,9 @@ public class TimeManager : MonoBehaviour
                 item.gameObject.SetActive(true);
             }
             item.ResetPosition();
+        }
+        foreach (DangerousObject danger in dangerList){
+            danger.TurnOnOff();
         }
     }
 

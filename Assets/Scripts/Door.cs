@@ -16,7 +16,7 @@ public class Door : InteractiveObject
     }
 
     // open the door
-    public virtual void OpenPassage()
+    public void OpenPassage()
     {
         gameObject.SetActive(false);
     }
