@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TimeManager : MonoBehaviour
+public class TimeManager : Manager
 {
     [SerializeField] private List<Item> itemList = new List<Item>();
     [SerializeField] private List<DangerousObject> dangerList = new List<DangerousObject>();

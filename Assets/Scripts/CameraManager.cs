@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Camera : MonoBehaviour
+public class CameraManager : Manager
 {
     [SerializeField] private Transform player = null;
     [SerializeField] private Transform end = null;

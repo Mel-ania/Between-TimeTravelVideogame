@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerColorManager : MonoBehaviour
+public class PlayerColorManager : Manager
 {
     private Color white  = new Color(1f, 1f, 1f, 1f);
     private Color yellow = new Color(1f, 0.85f, 0f, 1f);
