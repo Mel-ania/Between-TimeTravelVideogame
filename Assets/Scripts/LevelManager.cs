@@ -10,16 +10,17 @@ public class LevelManager : Manager
     //go to the next level and save the progress
     public void NextLevel()
     {
+        int index = SceneManager.GetActiveScene().buildIndex;
         player.gameObject.SetActive(false);
 
-        if (SceneManager.GetActiveScene().buildIndex == PlayerPrefs.GetInt("FinalLevel"))
+        if (index == PlayerPrefs.GetInt("FinalLevel"))
         {
             SceneManager.LoadScene("Home");
         }
         else
         {
-            PlayerPrefs.SetInt("SavedLevel", SceneManager.GetActiveScene().buildIndex + 1);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            PlayerPrefs.SetInt("SavedLevel", index + 1);
+            SceneManager.LoadScene(index + 1);
         }
     }
 }

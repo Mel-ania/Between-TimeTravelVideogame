@@ -38,7 +38,7 @@ public class TimeManager : Manager
     }
 
     // change time from present to past or past to present (according to
-    // the current time), call the function that change the postiion
+    // the current time), call the function that change the position
     // of the item in the scene and the function that turn on or off
     // the dangerous objects
     public void ChangeTime()

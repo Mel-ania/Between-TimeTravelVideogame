@@ -235,7 +235,7 @@ public class Player : MonoBehaviour
 
     ///// Inventory /////
 
-    // add a kye to the keyList, no matter the KeyType
+    // add a key to the keyList, no matter the KeyType
     public void AddKey (Key key)
     {
         keyList.Add(key);
@@ -253,7 +253,7 @@ public class Player : MonoBehaviour
         return keyList.Count > 0;
     }
 
-    // check if there is at leat one key that has a specific KeyType
+    // check if there is at least one key that has a specific KeyType
     public bool ContainsKeyType(Key.KeyType keyType)
     {
         foreach (Key k in keyList)

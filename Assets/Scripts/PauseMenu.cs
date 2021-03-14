@@ -21,7 +21,7 @@ public class PauseMenu : Menu
         SceneManager.LoadScene("Home");
     }
 
-    // freeze or defreeze the game
+    // freeze or unfreeze the game
     public void OnPause(bool isPaused)
     {
         if (isPaused)
