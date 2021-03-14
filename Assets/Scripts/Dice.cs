@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dices : CollectibleObject
+public class Dice : CollectibleObject
 {
 
 }

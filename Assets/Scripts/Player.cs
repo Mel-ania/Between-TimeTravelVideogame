@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     private SpriteRenderer body;
     private SpriteRenderer armLeft;
     private SpriteRenderer armRight;
-    [SerializeField] private PlayerColorManager pcm = null;
+    [SerializeField] private ColorManager pcm = null;
 
     //Movements
     private Animator animator;

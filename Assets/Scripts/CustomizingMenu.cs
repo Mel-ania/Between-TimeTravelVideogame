@@ -11,7 +11,7 @@ public class CustomizingMenu : Menu
     private Image armLeft;
     private Image armRight;
 
-    [SerializeField] private PlayerColorManager pcm = null;
+    [SerializeField] private ColorManager cm = null;
 
     private void Awake()
     {
@@ -23,18 +23,18 @@ public class CustomizingMenu : Menu
 
     private void Start()
     {
-        hood.color     = pcm.IsPlayerColor;
-        body.color     = pcm.IsPlayerColor;
-        armLeft.color  = pcm.IsPlayerColor;
-        armRight.color = pcm.IsPlayerColor;
+        hood.color     = cm.IsPlayerColor;
+        body.color     = cm.IsPlayerColor;
+        armLeft.color  = cm.IsPlayerColor;
+        armRight.color = cm.IsPlayerColor;
     }
 
     public void ChangePlayerColor(int color)
     {
-        pcm.SavePlayerColor(color);
-        hood.color     = pcm.IsPlayerColor;
-        body.color     = pcm.IsPlayerColor;
-        armLeft.color  = pcm.IsPlayerColor;
-        armRight.color = pcm.IsPlayerColor;
+        cm.SavePlayerColor(color);
+        hood.color     = cm.IsPlayerColor;
+        body.color     = cm.IsPlayerColor;
+        armLeft.color  = cm.IsPlayerColor;
+        armRight.color = cm.IsPlayerColor;
     }
 }

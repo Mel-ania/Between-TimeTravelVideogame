@@ -7549,7 +7549,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7729252479245824573, guid: 375caae3f5b716548b428666f74cfb9e, type: 3}
       propertyPath: m_Name
-      value: Dices (2)
+      value: Dice (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 375caae3f5b716548b428666f74cfb9e, type: 3}
@@ -10590,7 +10590,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7729252479245824573, guid: 375caae3f5b716548b428666f74cfb9e, type: 3}
       propertyPath: m_Name
-      value: Dices (4)
+      value: Dice (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 375caae3f5b716548b428666f74cfb9e, type: 3}
@@ -11130,7 +11130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7729252479245824573, guid: 375caae3f5b716548b428666f74cfb9e, type: 3}
       propertyPath: m_Name
-      value: Dices (1)
+      value: Dice (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 375caae3f5b716548b428666f74cfb9e, type: 3}
@@ -16140,7 +16140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bbddcca51923a54392eab66a380f3ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorKeyType: 2
+  doorKeyType: 1
   time: {fileID: 1072066262}
   portal: {fileID: 1410543476}
   particles: {fileID: 2088763863}
@@ -16725,7 +16725,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7729252479245824573, guid: 375caae3f5b716548b428666f74cfb9e, type: 3}
       propertyPath: m_Name
-      value: Dices
+      value: Dice
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 375caae3f5b716548b428666f74cfb9e, type: 3}
@@ -22468,7 +22468,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7729252479245824573, guid: 375caae3f5b716548b428666f74cfb9e, type: 3}
       propertyPath: m_Name
-      value: Dices (3)
+      value: Dice (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 375caae3f5b716548b428666f74cfb9e, type: 3}

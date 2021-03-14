@@ -601,7 +601,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7729252479245824573, guid: 375caae3f5b716548b428666f74cfb9e, type: 3}
       propertyPath: m_Name
-      value: Dices (1)
+      value: Dice (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 375caae3f5b716548b428666f74cfb9e, type: 3}
@@ -2905,9 +2905,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 668831684}
-  - component: {fileID: 668831685}
   - component: {fileID: 668831687}
   - component: {fileID: 668831686}
+  - component: {fileID: 668831685}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
@@ -4146,7 +4146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7729252479245824573, guid: 375caae3f5b716548b428666f74cfb9e, type: 3}
       propertyPath: m_Name
-      value: Dices
+      value: Dice
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 375caae3f5b716548b428666f74cfb9e, type: 3}
@@ -4262,7 +4262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bbddcca51923a54392eab66a380f3ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorKeyType: 2
+  doorKeyType: 0
   time: {fileID: 540374521}
   portal: {fileID: 1976828705}
   particles: {fileID: 1301761734}
@@ -16082,7 +16082,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7729252479245824573, guid: 375caae3f5b716548b428666f74cfb9e, type: 3}
       propertyPath: m_Name
-      value: Dices (3)
+      value: Dice (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 375caae3f5b716548b428666f74cfb9e, type: 3}
@@ -16999,7 +16999,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7729252479245824573, guid: 375caae3f5b716548b428666f74cfb9e, type: 3}
       propertyPath: m_Name
-      value: Dices (2)
+      value: Dice (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 375caae3f5b716548b428666f74cfb9e, type: 3}
