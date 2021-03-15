@@ -11,6 +11,7 @@ public class Box : Item
     private bool isGrounded = false;
 
     private float yPosition;
+    private float maxHeight = 4;
 
     private void Start()
     {
@@ -36,7 +37,7 @@ public class Box : Item
         else if (isGrounded && !isLanded)
         {
             isLanded = true;
-            if (yPosition - transform.position.y > 4)
+            if (yPosition - transform.position.y > maxHeight)
             {
                 animator.SetTrigger("broken");
             }
