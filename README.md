@@ -1,3 +1,5 @@
+# Between
+
 <img height="50px" src="https://user-images.githubusercontent.com/64848167/112650695-ede79280-8e4b-11eb-9c6b-b6d9d841c56f.png">
 
 Between is a platform puzzle time travel based videogame. The goal is to escape techno-magical alien rooms connected by portals.
@@ -12,3 +14,5 @@ Please, note that the player can:
 - run pressing right and left arrows;
 - jump pressing space;
 - time travel pressing "T" when owning a key.
+
+For advance knowledge on this topic, please check out the [documentation](Thesis%20-%20CodingaTimeTravel%20-%20Melania%20Gottardo.pdf) i.e. my bachelor's thesis.
